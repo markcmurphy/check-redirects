@@ -88,7 +88,7 @@ const SignupForm = () => {
 
   return (
     <>
-      <h1>Linter!</h1>
+      <h1>Redirect Checker!</h1>
       <Formik
         initialValues={
           {
