@@ -66,7 +66,7 @@ function ListItem({ value }) {
       <b>
         <a
           href={`https://developer.bigcommerce.com/api-reference/${value}`}
-          target={_blank}
+          target={"_blank"}
           rel="noopener noreferrer"
         >
           {value}
