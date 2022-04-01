@@ -6,10 +6,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
-textarea {
-  width:100vw;
-  resize: horizontal;
-}
+
 
 a {
   color: inherit;

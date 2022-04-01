@@ -89,6 +89,13 @@ const SignupForm = () => {
   return (
     <>
       <h1>Redirect Checker!</h1>
+      <ol>
+        <li>Insert redirect file contents</li>
+        <li>{`First line must be "from to type"`}</li>
+        <li>Ensure no empty space at end of input</li>
+        <li>Click submit</li>
+      </ol>
+        <p>Note: App may fail with longer inputs. Needs optimization.</p>
       <Formik
         initialValues={
           {
@@ -121,7 +128,7 @@ const SignupForm = () => {
             name="markdown"
             type="text"
             onChange={changeHandler}
-            // placeholder="new-branch"
+            placeholder="from to type"
           />
           {/* <input type="file" name="file" onChange={changeHandler} /> */}
           {/* {isSelected ? (
