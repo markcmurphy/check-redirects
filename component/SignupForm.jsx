@@ -63,7 +63,15 @@ const MySelect = ({ label, ...props }) => {
 function ListItem({ value }) {
   return (
     <li>
-      <b>{value}</b>
+      <b>
+        <a
+          href={`https://developer.bigcommerce.com/api-reference/${value}`}
+          target={_blank}
+          rel="noopener noreferrer"
+        >
+          {value}
+        </a>
+      </b>
     </li>
   );
 }
