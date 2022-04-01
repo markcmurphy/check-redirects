@@ -3,7 +3,7 @@ import { Formik, Form, useField, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import styled from '@emotion/styled';
 import { css } from '@emotion/react';
-import ClimbingBoxLoader from 'react-spinners/ClipLoader';
+import ClimbingBoxLoader from 'react-spinners/ClimbingBoxLoader';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -37,11 +37,11 @@ const StyledErrorMessage = styled.div`
   }
 `;
 
-// const override = css`
-//   display: block;
-//   margin: 0 auto;
-//   border-color: red;
-// `;
+const override = css`
+  display: flex;
+  margin: 8vh 0 0 3vw;
+  border-color: red;
+`;
 
 const StyledLabel = styled.label`
   margin-top: 1rem;
@@ -178,8 +178,10 @@ const SignupForm = () => {
           <div className="sweet-loading">
             <ClimbingBoxLoader
               loading={loading}
-              // css={override}
-              size={75}
+              color={'maroon'}
+              // loading={true}
+              css={override}
+              size={35}
             />
           </div>
         ) : null}
