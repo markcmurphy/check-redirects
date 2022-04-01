@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Form, useField, useFormikContext } from 'formik';
 import * as Yup from 'yup';
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
+import ClimbingBoxLoader from 'react-spinners/ClipLoader';
 
 const MyTextInput = ({ label, ...props }) => {
   const [field, meta] = useField(props);
@@ -34,6 +36,12 @@ const StyledErrorMessage = styled.div`
     color: var(--red-300);
   }
 `;
+
+// const override = css`
+//   display: block;
+//   margin: 0 auto;
+//   border-color: red;
+// `;
 
 const StyledLabel = styled.label`
   margin-top: 1rem;
@@ -79,9 +87,10 @@ const SignupForm = () => {
   const [selectedFile, setSelectedFile] = useState();
   const [isSelected, setIsSelected] = useState(false);
   const [formBody, setFormBody] = useState('');
+  let [loading, setLoading] = useState(false);
+  let [color, setColor] = useState('#0000FF');
 
   const changeHandler = (event) => {
-    // setSelectedFile(event.target.files[0]);
     setFormBody(event.target.value);
     setIsSelected(true);
   };
@@ -95,7 +104,7 @@ const SignupForm = () => {
         <li>Ensure no empty space at end of input</li>
         <li>Click submit</li>
       </ol>
-        <p>Note: App may fail with longer inputs. Needs optimization.</p>
+      <p>Note: App may fail with longer inputs. Needs optimization.</p>
       <Formik
         initialValues={
           {
@@ -104,9 +113,8 @@ const SignupForm = () => {
           }
         }
         onSubmit={async (values, { setSubmitting }) => {
+          setLoading(!loading);
           async function postData(url) {
-            // let formData = new FormData();
-            // formData.append('file', formBody);
             const response = await fetch(url, {
               method: 'POST',
               body: formBody,
@@ -124,7 +132,7 @@ const SignupForm = () => {
       >
         <Form>
           <MyTextInput
-            // label="branch"
+            label="Redirect File"
             name="markdown"
             type="text"
             onChange={changeHandler}
@@ -154,12 +162,18 @@ const SignupForm = () => {
           <button type="submit">Submit</button>
         </Form>
       </Formik>
-      {/* <div style={{ display: errors.length ? 'block' : 'none' }}> */}
       <div>
-        {/* //TODO: add status spinner */}
-        {/* style={{ display: showInfo ? 'block' : 'none' }} */}
         {errorDisplay}
 
+        {!errors.length ? (
+          <div className="sweet-loading">
+            <ClimbingBoxLoader
+              loading={loading}
+              // css={override}
+              size={75}
+            />
+          </div>
+        ) : null}
         <NumberList numbers={errors} />
       </div>
     </>
