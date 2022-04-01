@@ -113,6 +113,7 @@ const SignupForm = () => {
           }
         }
         onSubmit={async (values, { setSubmitting }) => {
+          setErrors([])
           setLoading(!loading);
           async function postData(url) {
             const response = await fetch(url, {
